@@ -1,0 +1,334 @@
+/* NXT full page design */ 
+/* required:
+ * jsplux.js
+ * design.js
+ * elements-design.css
+*/
+
+/* UI DESIGN */
+:root {
+    --primary: #3F51B5;
+    --dark-primary :#28358E; 
+}
+header {
+    background: var(--primary);
+    background: var(--primary);
+    width: 100%;
+    height: 450px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    font-size: 75px;
+    transition: left .4s, color .7s;
+}
+
+nav header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    font-size: 30px;
+    height: 70px;
+    z-index: 99;
+    animation: scrollIn .2s;
+}
+
+header span {
+    display: block;
+    padding-top: 179px;
+}
+
+nav {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--dark-primary);
+    height: 40px;
+    padding-top: 30px;
+    display: block;
+    color: #FEFEFE;
+    z-index: 9;
+    letter-spacing: 1px;
+    opacity: 1;
+    
+}
+nav , [app-drag] , #linkBack {
+    -webkit-app-region: drag;
+}
+holder * {
+    -webkit-app-region: no-drag;
+}
+nav.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+nav header div {
+    padding-top: 15px;
+}
+
+holder > container.on,
+holder > div.on {
+    animation-delay: .3s;
+    animation: slideUpCard .4s;
+}
+
+holder {
+    transition: opacity .15s, left .4s;
+}
+
+/* UI ELEMENTS */
+
+
+container.sidebar {
+    position: fixed;
+    width: 299px;
+    bottom: 0;
+    top: 20px;
+    left: 0;
+    margin-left: 1px;
+    overflow-y: scroll;
+    background: #e5e5e5;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    margin: none !important;
+   z-index: 10;
+}
+
+
+.omenu {
+    font-size: 18px;
+    padding: 9px 20px;
+    transition: border 0.2s, background 0.2s, opacity .4s, height .4s, padding .3s, color .2s;
+    min-height: 23px;
+    overflow: hidden;
+    overflow-y: ;
+}
+
+.omenu:hover {
+    background: var(--dark-primary);
+    cursor: pointer;
+    color: #fff;
+}
+
+.otitle {
+    margin-top: 20px;
+    text-align: center;
+    padding-left: 20%;
+    padding-right: 20%;
+    font-size: 20px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    padding-top: 5px;
+    color: white;
+    transition: all .2s;
+}
+
+.otitle div {
+    padding: 6px;
+    border-radius: 3px;
+    box-shadow: 0px 1px 2px #999;
+    background: var(--primary);
+}
+
+.o-expanded .omenu {
+    display: none;
+}
+
+.o-expanded .otitle {
+    margin: 0px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+    padding: 0;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.o-expanded .otitle div {
+    border-radius: 0px;
+    box-shadow: none;
+    padding: 30px 5px;
+}
+
+#tfill,
+.card, #tfill2 {
+    opacity: 1;
+    margin: 50px auto;
+    padding: 10px 25px 25px 25px;
+    max-width: 800px;
+    box-shadow: 0 1px 3px #999;
+    background: white;
+    border-radius: 0px 0px 2px 2px;
+}
+
+.sidebar .omenu::before {
+    content: '';
+    height: 8px;
+    width: 8px;
+
+    position: absolute;
+    margin-top: 7px;
+    margin-left: 240px;
+    border-radius: 6px;
+    transition: all .2s;
+}
+
+.sidebar .omenu.on::before {
+    background: #666;
+}
+
+.sidebar .omenu.on:hover::before {
+    background: white;
+}
+
+
+
+#pageTitle {
+    display: block;
+    font-size: 30px;
+    margin-left: 350px;
+    margin-top: -15px;
+    text-transform: uppercase;
+    transition: .2s;
+}
+
+/*material icons*/
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        margin-top: 30px;
+    }
+    100% {
+        opacity: 1;
+        margin-top: 3px;
+    }
+}
+
+@keyframes showUp {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUpCard {
+    0% {
+        opacity: 0.2;
+        margin-top: 150px;
+    }
+    100% {
+        opacity: 1;
+        margin-top: 120px;
+    }
+}
+
+
+
+.websiteThemeBlue nav,
+.websiteThemeBlue .toolbar,
+.websiteThemeBlue .omenu:hover,
+.websiteThemeBlue switch[checked="true"],
+.blue-antigene {
+    background: #1E88E5;
+
+}
+
+.websiteThemeBlue header {
+    background: #42A5F5;
+}
+
+#NineDotMenu {
+    position: fixed;
+    color: white;
+    top: 7px;
+    z-index: 99;
+    font-size: 32px;
+    right: 7px;
+-webkit-app-region: no-drag;
+}
+
+#NineDotMenu.on::after {
+    content: '';
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 100%;
+    z-index: 99;
+    height: 100%;
+    background: linear-gradient(#EEE, white);
+    animation: NineDotMenuUp .6s;
+}
+
+#NineDotMenu.on::before {
+    content: '';
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 97;
+    height: 100%;
+    opacity: 0;
+    background: #444;
+    border-radius: 0px !important;
+    animation: NineDotMenuBlack .6s;
+}
+
+.ctrls-l , .ctrls-x , .ctrls-m{
+    display: block !important;
+    -webkit-app-region: no-drag;
+    position: fixed;
+    top: 10px;
+    right: 80px;
+    color: white;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid var(--light-primary);
+    transition:all .1s;
+}
+.ctrls-l {
+    right:140px;
+}
+.ctrls-m {
+    right:200px;   
+}
+.ctrls-l:hover , .ctrls-x:hover , .ctrls-m:hover  {
+    background:var(--light-primary);
+    box-shadow:0px 0px 2px #222;
+}
+@keyframes NineDotMenuUp {
+    0% {
+        top: 100%;
+    }
+    100% {
+        top: 0%;
+        box-shadow: 0px -5px 20px #444;
+    }
+}
+
+@keyframes NineDotMenuBlack {
+    0% {
+        background: #999;
+        opacity: 0;
+    }
+    100% {
+        background: #444;
+        opacity: .8;
+    }
+}
+
+body.full-covered-active nav {
+   height:300px;
+   
+   z-index: -1;
+}
+body.full-covered-active holder > div:not(#splash).on {
+       border-radius: 6px 6px 0px 0px;
+       box-shadow: 0 1px 3px #444;
+}
+body.full-covered-active holder > div.on .card {
+    box-shadow: 0 1px 3px #444;
+}
