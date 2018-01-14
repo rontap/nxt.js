@@ -1,9 +1,14 @@
+
+
 *[block] { display: block; }
 *[in-block] { display: inline-block; }
 *[float] , *[flr] { float:right;}
-/*REGURAL INPUT*/
+*[monospace] {font-family:monospace; font-size:15px;}
+*[justify] { text-align:justify; }
+*[padded] { padding-right:60px;}
+/*REGULAR INPUT*/
 
-/* NXT input type design */ 
+/* NXT input type design */
 /* required, auto loading:
  * elements-design.css
 */
@@ -11,7 +16,7 @@
 
 /*----------------------------------------------------------------------------*/
 /*text inputs*/
-input:not([type="range"]):not([type="file"]) {
+input:not([type="range"]):not([type="file"]):not([type="checkbox"]) {
 	padding:5px;
 	margin:0px 5px;
 	border:1px solid #A1A1A1;
@@ -21,7 +26,7 @@ input:not([type="range"]):not([type="file"]) {
 	 outline: none;
 	transition:all .2s;
 }
-input:not([type="range"]):not([type="file"]):hover , input.active {
+input:not([type="range"]):not([type="file"]):not([type="checkbox"]):hover , input.active {
 	background:#FFF;
 	box-shadow: 0px 1px 1px #DDD;
 	width:140px;
@@ -34,9 +39,14 @@ input.short {
 }
 
 input:not([type="range"]):not([type="file"]):active , input.active {
-	border:1px solid #48F;
+	border:1px solid var(--primary);
 }
 
+input[disabled]:not([type="range"]):not([type="file"]):not([type="checkbox"]):hover , input.active {
+  border:1px solid #a1a1a1;
+  cursor: default;
+  background:#F1F1F1;
+}
 /*----------------------------------------------------------------------------*/
 /*status AKA progressbar*/
 status {
@@ -87,10 +97,16 @@ input[type=range] {
     width: 150px;
 
 }
+input[type=checkbox][nxt] {
+display:none;
+}
+label[nxt] {
+	transition:.4s;
+}
 input[type=range]::-webkit-slider-runnable-track {
     width: 300px;
     height:3px;
-    background:#FFA726;
+    background:var(--primary);
     border-radius: 1px;
     transition:background .2s;
     cursor: pointer;
@@ -106,7 +122,7 @@ input[type=range]::-webkit-slider-thumb {
     border: none;
     height: 13px;
     width: 13px;
-    background:var(--dark-primary);
+    background:var(--primary);
     margin-top:-5px;
     border-radius: 50%;
     transition:all .2s;
@@ -139,7 +155,9 @@ textarea ,.textarea {
   border:1px solid #DDD;
       font-family: 'Open Sans', sans-serif;
 }
-
+input[type=color] {
+  height:17px;
+}
 /*----------------------------------------------------------------------------*/
 /*0 - 1 checkbox*/ /*multiselect radio*/
 checkbox .material-icons ,radio .material-icons {
@@ -221,35 +239,68 @@ button[real] {
     border: none;
     transition:all .2s;
     outline:none;
-    
+
 }
-button:hover, button:focus {
+button[real] .material-icons {
+  padding: 0;
+  font-size: 20px;
+  margin: -2px -2px -4px 6px;
+  padding-top: 0px;
+  vertical-align: -5px;
+}
+button[disabled] {
+  cursor: default;
+  box-shadow: 0px 2px 5px #999 !important;
+}
+button[real]:hover, button[real]:focus {
      box-shadow: 0px 2px 7px #666;
      background: var(--primary);
     cursor: pointer;
 }
-button:active {
+button[real]:active {
     box-shadow: 0px 2px 5px #333 inset;
 }
 
+
+button[flat] {
+  border:0px;
+  background:rgba(255,255,255,.8);
+  border-radius: 3px;
+  font-family: 'Montserrat';
+  padding:6px;
+  cursor: pointer;
+  font-size:12px;
+  transition:.2s ;
+}
+button[flat]:hover {
+  background:rgba(200,200,200,.8);
+
+}
 /*SCROLLBARS*/
 
 
 
 .sidebar::-webkit-scrollbar {
-    width: 1em;
+    width:10px;
+border-top: 4px solid white;
 }
- 
+
 .sidebar::-webkit-scrollbar-track {
   cursor:col-resize;
-   
+
+
 }
 .sidebar::-webkit-scrollbar-track-piece:start {
-    background:#999;
+    background:#fff;
 }
 .sidebar::-webkit-scrollbar-thumb {
-  outline: 1px solid slategrey;
-   background:#666;
+
+   background:#999;
+	 padding: 10px 0px;
+	 border-radius: 10px;
+}
+.sidebar::-webkit-scrollbar {
+	border:none !important;
 }
 
 
@@ -263,7 +314,7 @@ body::-webkit-scrollbar {
 }
 *::-webkit-scrollbar-track {
   cursor:col-resize;
- 
+
 }
 *::-webkit-scrollbar-track-piece:start {
     background:#BBB;
@@ -274,7 +325,7 @@ body::-webkit-scrollbar {
 
 }
 *::-webkit-scrollbar-thumb:active {
-   
+
    background:#48F;
 }
 
@@ -301,11 +352,12 @@ selector span:hover {
    background:#DDD;
 }
 selector span.on:hover {
-   background: var(--primary);
+   background: var(--dark-primary);
+   color:white;
 }
 selector span.on {
    margin: -8px -5px;
    padding: 20px;
-   background: var(--dark-primary);
+   background: var(--primary);
    box-shadow: 0px 3px 2px #999;
 }
